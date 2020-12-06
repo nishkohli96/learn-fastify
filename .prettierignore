@@ -2,6 +2,7 @@ node_modules
 
 .prettierrc
 .prettierignore
+.gitignore
 
 yarn.lock
 yarn-error.log

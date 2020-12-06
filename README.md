@@ -1,2 +1,3 @@
 # learn-fastify
+
 Learn [Fastify](https://www.fastify.io/) from Scratch by implementing docs examples and more...

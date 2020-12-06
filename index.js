@@ -2,7 +2,19 @@
     a .catch() handler. 
     https://github.com/mcollina/make-promises-safe 
 */
-const fastify = require('fastify')({ logger: true });
+const fastify = require('fastify')({
+    logger: true,
+    ignoreTrailingSlash: true, // consider /foo & /foo/ as same , else /foo/ pe error
+    caseSensitive: false,
+});
+/* All other server props at https://www.fastify.io/docs/latest/Server/ */
+
+fastify.register(require('middie'));
+// fastify.register(require('cors')());
+fastify.register(require('./src/plugins/mongo'));
+fastify.register(require('./src/routes/firstroute'), { prefix: '/v1' });
+/* Will be acccessed at http://localhost:3000/v1/country */
+fastify.register(require('./src/routes/getapi_sample'));
 
 // Declare a route
 fastify.get('/', async (request, reply) => {
@@ -19,9 +31,6 @@ fastify.get('/', async (request, reply) => {
         └── hooks
         └── your services
 */
-
-fastify.register(require('./src/plugins/mongo'));
-fastify.register(require('./src/routes/firstroute'));
 
 // Run the server!
 const start = async () => {

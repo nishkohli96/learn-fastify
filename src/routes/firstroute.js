@@ -1,7 +1,7 @@
 async function routes(fastify, options) {
     const collection = fastify.mongo.db.collection('countries');
 
-    fastify.get('/countries', async (request, reply) => {
+    fastify.get('/country', async (request, reply) => {
         const result = await collection.find().toArray();
         if (result.length === 0) {
             throw new Error('No documents found');
@@ -9,7 +9,7 @@ async function routes(fastify, options) {
         return result;
     });
 
-    fastify.get('/countries/:abbr', async (request, reply) => {
+    fastify.get('/country/:abbr', async (request, reply) => {
         const result = await collection.findOne({
             abbr: request.params.abbr.toUpperCase(),
         });
