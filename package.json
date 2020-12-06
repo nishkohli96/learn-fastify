@@ -4,7 +4,8 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "nodemon -r make-promises-safe index.js"
+        "start": "nodemon -r make-promises-safe index.js",
+        "start2": "nodemon -r make-promises-safe index2.js"
     },
     "dependencies": {
         "cors": "^2.8.5",
