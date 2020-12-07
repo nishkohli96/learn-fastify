@@ -1,3 +1,4 @@
+/* It can be a set of routes */
 async function routes(fastify, options) {
     const collection = fastify.mongo.db.collection('countries');
 
